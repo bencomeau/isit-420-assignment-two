@@ -172,7 +172,9 @@ document
   .addEventListener('click', async (e) => {
     e.preventDefault();
 
-    let curr = 1;
+    const ORDER_QUANTITY = 500;
+    let curr = 0;
+    let hasError = false;
 
     do {
       const orderDetails = createOrder();
@@ -184,15 +186,19 @@ document
         );
 
         if (!'_id' in response) {
-          setButtonStatus('createFiveHundredStatus', 'There was an error!');
+          hasError = true;
           throw new Error('Network response was not ok');
         }
-
-        setButtonStatus('createFiveHundredStatus', 'Success!');
       } catch (e) {
+        hasError = true;
         console.error(e);
       }
 
       curr++;
-    } while (curr < 500);
+    } while (curr < ORDER_QUANTITY);
+
+    setButtonStatus(
+      'createFiveHundredStatus',
+      hasError ? 'There was an error!' : 'Success!'
+    );
   });
