@@ -120,9 +120,6 @@ const setButtonStatus = (id, status) => {
   }, 4000);
 };
 
-// Sets the formData to the orderForm on the DOM
-const formData = new FormData(document.getElementById('orderForm'));
-
 /**
  * Attaches an event listener to the orderForm
  * so we can iterate over the properties
@@ -146,6 +143,7 @@ document.getElementById('orderForm').addEventListener('submit', async (e) => {
 document.getElementById('createOne').addEventListener('click', async (e) => {
   e.preventDefault();
 
+  const formData = new FormData(document.getElementById('orderForm'));
   const data = Object.fromEntries(formData.entries());
 
   try {
