@@ -1,5 +1,8 @@
+require('../database/connection'); // Executes the DB connection
 var express = require('express');
 var router = express.Router();
+const generatePurchaseTime = require('../utils/order');
+const Order = require('../database/OrderSchema');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
