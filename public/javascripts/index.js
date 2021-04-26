@@ -177,6 +177,10 @@ document
     let hasError = false;
 
     do {
+      document.getElementById(
+        'createFiveHundredStatus'
+      ).innerHTML = `Working...${curr} of ${ORDER_QUANTITY} created`;
+
       const orderDetails = createOrder();
 
       try {
